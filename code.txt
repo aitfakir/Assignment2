@@ -20,6 +20,10 @@ public class Vehicle {
     public int getYear() {
         return year;
     }
+    
+    public void honk() {
+       System.out.println("Beep beep!");
+    }
 
     @Override
     public String toString() {
