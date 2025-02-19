@@ -1,14 +1,18 @@
+import java.util.Objects;
+
 public class Vehicle {
     private String brand;
     private String model;
     private int year;
 
+    // Constructor
     public Vehicle(String brand, String model, int year) {
         this.brand = brand;
         this.model = model;
         this.year = year;
     }
 
+    // Getters
     public String getBrand() {
         return brand;
     }
@@ -20,13 +24,47 @@ public class Vehicle {
     public int getYear() {
         return year;
     }
-    
-    public void honk() {
-       System.out.println("Beep beep!");
+
+    // Setter for year
+    public void setYear(int year) {
+        this.year = year;
     }
 
+    // Method to honk
+    public void honk() {
+        System.out.println("Beep beep!");
+    }
+
+    // Method to display vehicle information
+    public void displayInfo() {
+        System.out.println("Vehicle Information: " + toString());
+    }
+
+    // Override toString method
     @Override
     public String toString() {
         return year + " " + brand + " " + model;
+    }
+
+    // Override equals method
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Vehicle)) return false;
+        Vehicle vehicle = (Vehicle) obj;
+        return year == vehicle.year &&
+               brand.equals(vehicle.brand) &&
+               model.equals(vehicle.model);
+    }
+
+    // Override hashCode method
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, model, year);
+    }
+
+    // Method to compare vehicles by year
+    public int compareTo(Vehicle other) {
+        return Integer.compare(this.year, other.year);
     }
 }
